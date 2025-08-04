@@ -4,8 +4,10 @@ services:
     container_name: nginx-learning-container
     ports:
       - "8080:80"
+      - "443:443"
     volumes:
       - ./sample-app:/usr/share/nginx/html:ro
       - ./logs:/var/log/nginx
       - ./default.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl:ro
     restart: unless-stopped
