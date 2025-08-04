@@ -1,0 +1,11 @@
+services:
+  nginx:
+    build: .
+    container_name: nginx-learning-container
+    ports:
+      - "8080:80"
+    volumes:
+      - ./sample-app:/usr/share/nginx/html:ro
+      - ./logs:/var/log/nginx
+      - ./default.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
