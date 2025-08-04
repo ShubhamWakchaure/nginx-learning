@@ -13,6 +13,12 @@ This repository contains a sample web application and Nginx configuration for pe
    docker compose up --build
    ```
 
+3. **For testing HTTPS connection**
+    Create the ssl certification using below command
+    ```bash
+    openssl req -x509 -newkey rsa:4096 -nodes -keyout ssl/selfsigned.key -out ssl/selfsigned.crt -days 365 -subj "//CN=localhost"   
+    ```
+
 3. **Edit Files via Volume Mounts**  
    All files are attached to the container via Docker volumes. You can edit them at any time.
 
