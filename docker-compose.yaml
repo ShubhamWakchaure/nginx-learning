@@ -1,13 +1,34 @@
 services:
   nginx:
-    build: .
+    # build: .
+    image: nginx:1.25.3
     container_name: nginx-learning-container
     ports:
       - "8080:80"
-      - "443:443"
+      # - "443:443"
     volumes:
       - ./sample-app:/usr/share/nginx/html:ro
       - ./logs:/var/log/nginx
       - ./default.conf:/etc/nginx/nginx.conf
       - ./ssl:/etc/nginx/ssl:ro
+    restart: unless-stopped
+  nginx2:
+    # build: .
+    image: nginx:1.25.3
+    container_name: only-nginx-1
+    ports:
+      - "8081:80"
+      # - "443:443"
+    volumes:
+      - ./server_1.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
+  nginx3:
+    # build: .
+    image: nginx:1.25.3
+    container_name: only-nginx-2
+    ports:
+      - "8082:80"
+      # - "443:443"
+    volumes:
+      - ./server_2.conf:/etc/nginx/nginx.conf
     restart: unless-stopped
